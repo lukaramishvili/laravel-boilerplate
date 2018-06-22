@@ -30,8 +30,9 @@
 
     <!-- Global CSS -->
     <!-- Plugins CSS -->
-    <link rel="stylesheet" href="{{ asset('/css/vendor.css') }}">
-    <link rel="stylesheet" href="{{ asset_v_refresh('/css/app.css') }}">
+    <!-- asset_v_refresh instead of mix -->
+    <link rel="stylesheet" href="{{ mix('/css/vendor.css') }}">
+    <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
     @yield('external_style')
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 
@@ -145,13 +146,11 @@ lang-{{ lang() }}
 
 
 
-    <script src="{{ asset('/js/vendor.js') }}"></script>
+    <script src="{{ mix('/js/vendor.js') }}"></script>
     @section('bottom-extras')
     @show
-    <script src="{{ asset_v_refresh('/js/main.js') }}"></script>
-    @if(Auth::check() && Auth::user()->type == "admin")
-    <script src="{{ asset_v_refresh('/js/admin.js') }}"></script>
-    @endif
+    <!-- asset_v_refresh instead of mix -->
+    <script src="{{ mix('/js/app.js') }}"></script>
     <script type="text/javascript">
       $.ajaxSetup({
         headers: {

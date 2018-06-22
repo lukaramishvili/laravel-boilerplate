@@ -12,4 +12,25 @@ let mix = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
+    .sourceMaps();
+
+mix.js('resources/assets/js/vendor.js', 'public/js')
+    .sourceMaps();
+
+mix.sass('resources/assets/sass/app.scss', 'public/css')
+    .options({
+        processCssUrls: false
+    })
+    .sourceMaps();
+
+mix.sass('resources/assets/sass/vendor.scss', 'public/css')
+    .options({
+        processCssUrls: false
+    })
+    .sourceMaps();
+
+mix.copyDirectory('resources/assets/fonts', 'public/fonts');
+
+if (mix.inProduction()) {
+    mix.version();
+}
