@@ -131,6 +131,20 @@ lang-{{ lang() }}
 
 
 
+
+
+    <div class="global-wrapper">
+      @include('partials.main-menu')
+
+      @section('content')
+      @show
+    </div>
+
+
+
+
+
+
     <script src="{{ asset('/js/vendor.js') }}"></script>
     @section('bottom-extras')
     @show
