@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ LaravelLocalization::getCurrentLocale() }}">
+<html lang="{{ lang() }}">
   <head>
     <title>Welcome</title>
     <!-- Meta -->
@@ -31,7 +31,7 @@
     <!-- Global CSS -->
     <!-- Plugins CSS -->
     <link rel="stylesheet" href="{{ asset('/css/vendor.css') }}">
-    <link rel="stylesheet" href="{{ asset('/css/app.css') }}?v={{ filemtime(public_path().'/css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset_v_refresh('/css/app.css') }}">
     @yield('external_style')
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 
@@ -100,7 +100,7 @@ lang-{{ lang() }}
     }
   </script>
   <script>
-    window.lang = '{{ LaravelLocalization::getCurrentLocale() }}';
+    window.lang = '{{ lang() }}';
     window.authed_user_id = {{ Auth::check() ? Auth::user()->id : 0 }};
     //
     window.transList = {
@@ -134,9 +134,9 @@ lang-{{ lang() }}
     <script src="{{ asset('/js/vendor.js') }}"></script>
     @section('bottom-extras')
     @show
-    <script src="{{ asset('/js/main.js') }}?v={{ filemtime(public_path().'/js/main.js') }}"></script>
+    <script src="{{ asset_v_refresh('/js/main.js') }}"></script>
     @if(Auth::check() && Auth::user()->type == "admin")
-    <script src="{{ asset('/js/admin.js') }}?v={{ filemtime(public_path().'/js/admin.js') }}"></script>
+    <script src="{{ asset_v_refresh('/js/admin.js') }}"></script>
     @endif
     <script type="text/javascript">
       $.ajaxSetup({
