@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Blade;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -17,6 +18,11 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         Schema::defaultStringLength(191);
+        //
+        Blade::directive('lang', function()
+        {
+            return "<?php echo lang(); ?>";
+        });
     }
 
     /**
@@ -27,5 +33,6 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+        \Carbon\Carbon::setLocale(config('app.locale'));
     }
 }
