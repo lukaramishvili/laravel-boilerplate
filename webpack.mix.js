@@ -33,4 +33,8 @@ mix.copyDirectory('resources/assets/fonts', 'public/fonts');
 
 if (mix.inProduction()) {
     mix.version();
+} else {
+    // Development mode
+    // get app url from .env file
+    mix.browserSync(process.env.APP_URL);
 }
